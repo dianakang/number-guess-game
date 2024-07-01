@@ -14,10 +14,13 @@ let playButton = document.getElementById("play-button");
 let userInput = document.getElementById("user-input");
 let resultArea = document.getElementById("result-area");
 let resetButton = document.getElementById("reset-button");
-let chances = 5;
-let gameOver = false;
 let chanceArea = document.getElementById("chance-area");
-let history= [];
+let historyArea = document.getElementById("history-area");
+let answerArea = document.getElementById("answer-area");
+let answer = document.getElementById("answer");
+let chances = 3;
+let gameOver = false;
+let history = [];
 
 playButton.addEventListener("click", play);
 resetButton.addEventListener("click", reset);
@@ -57,6 +60,7 @@ function play(){
     }
 
     history.push(userValue);
+    historyArea.textContent = `Your guesses: ${history.join(", ")}`;
     console.log(history);
 
     if(chances <1){
@@ -65,6 +69,8 @@ function play(){
 
     if(gameOver==true){
         playButton.disabled = true;
+        answerArea.style.display = "block";
+        answer.textContent = computerNum;
     }
 }
 function reset(){
@@ -72,6 +78,7 @@ function reset(){
     pickRandomNum();
 }
     resultArea.textContent="Result is here!"
+    answerArea.style.display = "none";
 
 
 pickRandomNum();
