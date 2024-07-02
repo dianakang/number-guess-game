@@ -31,9 +31,14 @@ userInput.addEventListener("focus",function(){
 function pickRandomNum(){
     computerNum = Math.floor(Math.random() * 100) + 1;
     console.log("정답", computerNum);
+    answer.textContent = computerNum; // 정답을 항상 화면에 표기
 }
 
 function play(){
+    if (gameOver){
+        return;
+    }
+    
     let userValue = userInput.value;
 
     if(userValue<1 || userValue>100){
@@ -76,9 +81,15 @@ function play(){
 function reset(){
     userInput.value= "";
     pickRandomNum();
-}
+
     resultArea.textContent="Result is here!"
+    chances = 3;
+    chanceArea.textContent = `남은 기회: ${chances}번`;
+    history= [];
+    historyArea.textContent = "Your guesses: ";
+    playButton.disabled = false;
+    gameOver = false;
     answerArea.style.display = "none";
 
-
+}
 pickRandomNum();
