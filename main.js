@@ -89,7 +89,8 @@ function reset(){
     historyArea.textContent = "Your guesses: ";
     playButton.disabled = false;
     gameOver = false;
-    answerArea.style.display = "none";
+    // 다음 게임에서도 정답을 UI에 표시
+    answerArea.textContent = "정답: " + computerNum;
 
 }
 pickRandomNum();
